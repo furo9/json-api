@@ -11,10 +11,13 @@ provenance automatically.
 
 ## One-time setup
 
-The packages must exist on npm before trusted publishers can be configured.
-After the initial repository changes are reviewed, committed, and pushed,
-publish each package once from an authenticated local npm session, in dependency
-order:
+The packages must exist on npm before trusted publishers can be configured. For
+the initial release, create a short-lived granular npm token with read/write
+access to the `@furo9` package scope and expose it to this repository as the
+GitHub Actions secret `NPM_TOKEN`. The release workflow can then publish the
+initial versions in dependency order.
+
+The equivalent local bootstrap from an authenticated npm session is:
 
 ```sh
 pnpm install --frozen-lockfile
@@ -25,8 +28,8 @@ pnpm --filter @furo9/json-api publish --access public
 pnpm --filter @furo9/json-api-resource-drizzle publish --access public
 ```
 
-Until this bootstrap is complete, the automated workflow skips packages that do
-not exist on npm rather than attempting their initial publication.
+Without `ALLOW_INITIAL_PUBLISH=true`, the publisher skips packages that do not
+exist on npm rather than attempting their initial publication.
 
 For each package on npmjs.com, configure the same trusted publisher:
 

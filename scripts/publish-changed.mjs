@@ -10,6 +10,8 @@ const rootDirectory = path.resolve(
 );
 const packagesDirectory = path.join(rootDirectory, "packages");
 const dryRun = process.argv.includes("--dry-run");
+const allowInitialPublish =
+  process.env.ALLOW_INITIAL_PUBLISH === "true";
 
 const entries = await readdir(packagesDirectory, { withFileTypes: true });
 const packages = (
@@ -52,7 +54,11 @@ for (const workspacePackage of orderedPackages) {
     console.log(`Skipping ${name}@${version}; it is already published.`);
     continue;
   }
-  if (publicationStatus === "uninitialized" && !dryRun) {
+  if (
+    publicationStatus === "uninitialized" &&
+    !dryRun &&
+    !allowInitialPublish
+  ) {
     console.log(
       `Skipping ${name}@${version}; publish the package manually once before enabling automated releases.`,
     );

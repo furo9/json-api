@@ -33,3 +33,6 @@ jobs:
       - run: pnpm test
       - run: pnpm build
       - run: pnpm publish:changed
+        env:
+          ALLOW_INITIAL_PUBLISH: "true"
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
