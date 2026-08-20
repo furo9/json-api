@@ -1,0 +1,50 @@
+{
+  "name": "@furo9/json-api",
+  "version": "0.1.0",
+  "description": "Framework-neutral JSON:API engine built on standard Web APIs",
+  "type": "module",
+  "sideEffects": false,
+  "files": [
+    "dist",
+    "LICENSE",
+    "README.md"
+  ],
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "default": "./dist/index.js"
+    }
+  },
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "scripts": {
+    "build": "tsup src/index.ts --format esm --dts --sourcemap --clean --target es2022 --platform neutral",
+    "prepack": "pnpm build",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run"
+  },
+  "keywords": [
+    "json-api",
+    "jsonapi",
+    "web-api",
+    "typescript"
+  ],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/furo9/json-api.git",
+    "directory": "packages/json-api"
+  },
+  "bugs": {
+    "url": "https://github.com/furo9/json-api/issues"
+  },
+  "homepage": "https://github.com/furo9/json-api/tree/main/packages/json-api#readme",
+  "publishConfig": {
+    "access": "public"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

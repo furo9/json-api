@@ -1,0 +1,58 @@
+{
+  "name": "@furo9/json-api-resource-drizzle",
+  "version": "0.1.0",
+  "description": "PostgreSQL Drizzle resources for @furo9/json-api",
+  "type": "module",
+  "sideEffects": false,
+  "files": [
+    "dist",
+    "LICENSE",
+    "README.md"
+  ],
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "default": "./dist/index.js"
+    }
+  },
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "scripts": {
+    "build": "tsup src/index.ts --format esm --dts --sourcemap --clean --target es2022 --platform neutral --external @furo9/json-api --external drizzle-orm",
+    "prepack": "pnpm build",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run"
+  },
+  "keywords": [
+    "json-api",
+    "jsonapi",
+    "drizzle",
+    "postgresql",
+    "typescript"
+  ],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/furo9/json-api.git",
+    "directory": "packages/json-api-resource-drizzle"
+  },
+  "bugs": {
+    "url": "https://github.com/furo9/json-api/issues"
+  },
+  "homepage": "https://github.com/furo9/json-api/tree/main/packages/json-api-resource-drizzle#readme",
+  "publishConfig": {
+    "access": "public"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "peerDependencies": {
+    "@furo9/json-api": "^0.1.0",
+    "drizzle-orm": ">=0.45.0 <0.46.0"
+  },
+  "devDependencies": {
+    "@furo9/json-api": "workspace:*"
+  }
+}

@@ -1,0 +1,8 @@
+packages:
+  - "packages/*"
+
+allowBuilds:
+  esbuild: true
+
+overrides:
+  vite: 6.1.0

@@ -1,0 +1,20 @@
+{
+  "name": "@furo9/json-api-workspace",
+  "private": true,
+  "scripts": {
+    "build": "pnpm --recursive build",
+    "pack:check": "pnpm --recursive exec pnpm pack --dry-run",
+    "publish:changed": "node scripts/publish-changed.mjs",
+    "publish:changed:dry-run": "node scripts/publish-changed.mjs --dry-run",
+    "typecheck": "pnpm --recursive typecheck",
+    "test": "pnpm --recursive test"
+  },
+  "packageManager": "pnpm@11.9.0",
+  "devDependencies": {
+    "drizzle-orm": "0.45.2",
+    "tsup": "8.5.0",
+    "typescript": "5.9.2",
+    "vite": "6.1.0",
+    "vitest": "3.2.4"
+  }
+}
